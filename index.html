@@ -8,11 +8,14 @@
 </head>
 <body>
   <!-- Главное меню -->
-  <div id="menu-screen" class="screen active">
-    <h1>Seton's clutch</h1>
-    <p>
-      <img src="./assets/image.png" alt="">
-      <div>
+<div id="menu-screen" class="screen active">
+  <h1 class="menu-title">Seton's clutch</h1>
+
+  <div class="menu-content">
+
+    <div class="menu-left">
+      <img src="./assets/image.png" alt="Preview">
+      <div class="menu-description">
         <p>
           Добро пожаловать на арену, вдохновлённую легендарной картой Seton’s Clutch — одной из самых известных стратегических
           арен в классе игр наподобие Supreme Commander. Эта карта стала классикой среди многопользовательских баталий,
@@ -30,16 +33,24 @@
           чтобы сдвинуть фрагменты в нужном порядке и одержать победу!</p>
         </p>
       </div>
-    <label for="player-name">Впишите свое имя в историю!</label>
-    <input type="text" id="player-name" placeholder="Lenking">
-      <label for="difficulty">Выберите уровень сложности</label>
+    </div>
+
+    <div class="menu-right">
+      <label for="player-name">Имя</label>
+      <input type="text" id="player-name" placeholder="Lenking">
+
+      <label for="difficulty">Сложность</label>
       <select id="difficulty">
         <option value="2">Детский (2×2)</option>
         <option value="3">Взрослый (3×3)</option>
         <option value="4" selected>Профессиональный (4×4)</option>
       </select>
-    <button id="start-btn">Начать игру</button>
+
+      <button id="start-btn">Начать игру</button>
+    </div>
+
   </div>
+</div>
 
   <!-- Игровой экран -->
   <div id="game-screen" class="screen">

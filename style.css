@@ -1,12 +1,18 @@
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     background: #111;
     color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .screen {
@@ -35,12 +41,10 @@ button {
 }
 
 /* Фон главного меню */
-
 #menu-screen {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+    min-height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 /* Размытый фон */
@@ -70,6 +74,52 @@ button {
     background: rgba(0,0,0,0.6);
     z-index: 0;
 }
+
+.menu-title {
+    margin: 0 0 20px 0;
+}
+
+.menu-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 40px;
+    max-width: 1200px;
+    width: 100%;
+    height: 100%;
+}
+
+.menu-left {
+    flex: 1;
+    overflow: auto;
+}
+
+.menu-left img {
+    width: 288px;
+    object-fit: cover;
+}
+
+.menu-description {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.menu-right {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+}
+
+.menu-right input,
+.menu-right select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
 /* GAME */
 .top-panel {
     display: flex;

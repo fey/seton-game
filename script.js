@@ -73,14 +73,23 @@ function startGame() {
     generateSolvableState();
     renderBoard();
 }
-
 function generateSolvableState() {
-  state = [...Array(size * size - 1).keys()].map(n => n + 1);
-  state.push(null);
+    const solved = [...Array(size * size - 1).keys()].map(n => n + 1);
+    solved.push(null);
 
     do {
-        state.sort(() => Math.random() - 0.5);
-    } while (!isSolvable(state));
+        state = [...solved].sort(() => Math.random() - 0.5);
+    } while (!isSolvable(state) || isWinningState());
+}
+
+function isWinningState() {
+    const totalTiles = size * size;
+
+    for (let i = 0; i < totalTiles - 1; i++) {
+        if (state[i] !== i + 1) return false;
+    }
+
+    return state[totalTiles - 1] === null;
 }
 
 function isSolvable(arr) {
@@ -168,13 +177,7 @@ function getValidMoves(emptyIndex) {
 }
 
 function checkWin() {
-    const totalTiles = size * size;
-
-    for (let i = 0; i < totalTiles - 1; i++) {
-        if (state[i] !== i + 1) return;
-    }
-
-    if (state[totalTiles - 1] !== null) return;
+    if (!isWinningState()) return;
 
     clearInterval(timerInterval);
 
