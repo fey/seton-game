@@ -21,8 +21,26 @@ const currentPlayerSpan = document.getElementById("current-player");
 
 const music = document.getElementById("bg-music");
 const musicToggleBtn = document.getElementById("music-toggle-btn");
+const exitBtn = document.getElementById("exit-btn");
 
 let musicEnabled = true;
+
+exitBtn.addEventListener("click", exitToMenu);
+
+function exitToMenu() {
+    clearInterval(timerInterval);
+
+    gameScreen.classList.remove("active");
+    menuScreen.classList.add("active");
+
+    // при желании можно сбросить игру
+    moves = 0;
+    timer = 0;
+
+    if (musicEnabled) {
+        music.pause();
+    }
+}
 
 musicToggleBtn.addEventListener("click", () => {
     if (musicEnabled) {
