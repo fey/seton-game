@@ -18,6 +18,21 @@ const timerSpan = document.getElementById("timer");
 const currentPlayerSpan = document.getElementById("current-player");
 
 const music = document.getElementById("bg-music");
+const musicToggleBtn = document.getElementById("music-toggle-btn");
+
+let musicEnabled = true;
+
+musicToggleBtn.addEventListener("click", () => {
+    if (musicEnabled) {
+        music.pause();
+        musicToggleBtn.textContent = "Включить музыку";
+    } else {
+        music.play();
+        musicToggleBtn.textContent = "Выключить музыку";
+    }
+
+    musicEnabled = !musicEnabled;
+});
 
 startBtn.addEventListener("click", () => {
     const name = nameInput.value.trim();

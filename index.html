@@ -38,16 +38,25 @@
   <!-- Игровой экран -->
   <div id="game-screen" class="screen">
     <div class="top-panel">
-      <div>Игрок: <span id="current-player"></span></div>
-      <div>Ходы: <span id="moves">0</span></div>
-      <div>Время: <span id="timer">0</span> сек</div>
-      <button id="restart-btn">Заново</button>
+      <div class="top-info">
+        <div>Игрок: <span id="current-player"></span></div>
+        <div>Ходы: <span id="moves">0</span></div>
+        <div>Время: <span id="timer">0</span> сек</div>
+      </div>
+
+      <div class="top-buttons">
+        <button id="music-toggle-btn">Выключить музыку</button>
+        <button id="restart-btn">Заново</button>
+      </div>
     </div>
 
     <div id="board"></div>
+    <div id="hint">
+      <small>Кликай мышкой по квадрату, чтобы передвинуть его</small>
+    </div>
   </div>
 
-  <audio id="bg-music" src="assets/music.mp3" loop></audio>
+  <audio id="bg-music" src="assets/music.ogg" loop></audio>
 
   <script src="script.js"></script>
 </body>
