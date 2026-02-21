@@ -1,4 +1,4 @@
-const size = 4;
+let size = 4;
 let state = [];
 let moves = 0;
 let timer = 0;
@@ -6,12 +6,14 @@ let timerInterval = null;
 let playerName = "";
 
 const menuScreen = document.getElementById("menu-screen");
+const difficultySelect = document.getElementById("difficulty");
 const gameScreen = document.getElementById("game-screen");
 const board = document.getElementById("board");
 
 const startBtn = document.getElementById("start-btn");
 const restartBtn = document.getElementById("restart-btn");
 const nameInput = document.getElementById("player-name");
+
 
 const movesSpan = document.getElementById("moves");
 const timerSpan = document.getElementById("timer");
@@ -44,12 +46,14 @@ startBtn.addEventListener("click", () => {
     playerName = name;
     currentPlayerSpan.textContent = playerName;
 
-    music.play();
+    size = parseInt(difficultySelect.value);
 
     menuScreen.classList.remove("active");
     gameScreen.classList.add("active");
 
     startGame();
+
+    music.play();
 });
 
 restartBtn.addEventListener("click", startGame);
@@ -71,8 +75,8 @@ function startGame() {
 }
 
 function generateSolvableState() {
-    state = [...Array(15).keys()].map(n => n + 1);
-    state.push(null);
+  state = [...Array(size * size - 1).keys()].map(n => n + 1);
+  state.push(null);
 
     do {
         state.sort(() => Math.random() - 0.5);
@@ -99,11 +103,15 @@ function isSolvable(arr) {
 }
 
 const boardSize = 288;
-const gridSize = 4;
 const tileSize = boardSize / gridSize;
 
 function renderBoard() {
   board.innerHTML = "";
+
+  const tileSize = boardSize / size;
+
+  board.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+  board.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 
   state.forEach((value, index) => {
     const tile = document.createElement("div");
@@ -116,9 +124,10 @@ function renderBoard() {
     } else {
       tile.classList.add("tile");
 
-      const row = Math.floor((value - 1) / gridSize);
-      const col = (value - 1) % gridSize;
+      const row = Math.floor((value - 1) / size);
+      const col = (value - 1) % size;
 
+      tile.style.backgroundSize = `${boardSize}px ${boardSize}px`;
       tile.style.backgroundPosition =
         `-${col * tileSize}px -${row * tileSize}px`;
 
@@ -159,9 +168,13 @@ function getValidMoves(emptyIndex) {
 }
 
 function checkWin() {
-    for (let i = 0; i < 15; i++) {
+    const totalTiles = size * size;
+
+    for (let i = 0; i < totalTiles - 1; i++) {
         if (state[i] !== i + 1) return;
     }
+
+    if (state[totalTiles - 1] !== null) return;
 
     clearInterval(timerInterval);
 
