@@ -7,19 +7,20 @@ let playerName = "";
 
 const menuScreen = document.getElementById("menu-screen");
 const difficultySelect = document.getElementById("difficulty");
-const gameScreen = document.getElementById("game-screen");
-const board = document.getElementById("board");
 
 const startBtn = document.getElementById("start-btn");
-const restartBtn = document.getElementById("restart-btn");
 const nameInput = document.getElementById("player-name");
 
+const gameScreen = document.getElementById("game-screen");
+const board = document.getElementById("board");
 
 const movesSpan = document.getElementById("moves");
 const timerSpan = document.getElementById("timer");
 const currentPlayerSpan = document.getElementById("current-player");
 
 const music = document.getElementById("bg-music");
+
+const restartBtn = document.getElementById("restart-btn");
 const musicToggleBtn = document.getElementById("music-toggle-btn");
 const exitBtn = document.getElementById("exit-btn");
 
