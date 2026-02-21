@@ -1,0 +1,103 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #111;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.screen {
+    display: none;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    margin-top: 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.top-panel {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 15px;
+}
+
+/* Фон главного меню */
+#menu-screen {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Размытый фон */
+#menu-screen::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("assets/image.png");
+    background-size: cover;
+    background-position: center;
+    filter: blur(20px);
+    transform: scale(1.1); /* чтобы края не обрезались после blur */
+    z-index: 0;
+}
+
+/* Контент поверх фона */
+#menu-screen > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Лёгкое затемнение для читаемости */
+#menu-screen::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    z-index: 0;
+}
+
+/* GAME */
+#board {
+    width: 288px;
+    height: 288px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 2px;
+    background: #333;
+}
+
+.tile {
+    background-image: url("./assets/image.png");
+    background-size: 288px 288px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.tile:hover {
+    filter: brightness(1.2);
+}
+
+.empty {
+    background: #111;
+    cursor: default;
+}
